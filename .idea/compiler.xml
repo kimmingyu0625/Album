@@ -3,11 +3,25 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
+<<<<<<< HEAD
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="photo.photo" target="17" />
       <module name="photo.photo.main" target="17" />
       <module name="photo.photo.test" target="17" />
+=======
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.22/9c08ea24c6eb714e2d6170e8122c069a0ba9aacf/lombok-1.18.22.jar" />
+        </processorPath>
+        <module name="photo.photo.main" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="photo.photo.main~1" target="17" />
+      <module name="photo.photo.test~1" target="17" />
+>>>>>>> 16061b17e82216f2001ea42518175e4adc005d38
     </bytecodeTargetLevel>
   </component>
 </project>
