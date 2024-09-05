@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2131e54e-13f6-424f-a4ca-fbd442c15228" name="Changes" comment="Fix. commit">
+    <list default="true" id="2131e54e-13f6-424f-a4ca-fbd442c15228" name="Changes" comment="Fix. spring security Filter 중간 커밋">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/constants/SecurityConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/jwt/filter/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/jwt/filter/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/jwt/filter/JwtReqeustFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/jwt/filter/JwtReqeustFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/jwt/provider/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/jwt/provider/JwtTokenProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,24 +54,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/82104/Desktop/photo/photo/src/main/frontend/src/images&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;acce91f88063201476bef636a1c92e97&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/82104/Desktop/photo/photo/src/main/frontend/src/images",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "spring.configuration.checksum": "7f971ca172c4edf58729ee4e6bbd93d6"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\82104\Desktop\photo\photo\src\main\frontend\src\images" />
@@ -111,6 +115,8 @@
       <workItem from="1724491129681" duration="4501000" />
       <workItem from="1724579900939" duration="6844000" />
       <workItem from="1725425235204" duration="5968000" />
+      <workItem from="1725534736710" duration="325000" />
+      <workItem from="1725535077690" duration="2857000" />
     </task>
     <task id="LOCAL-00001" summary="Fix. 2024-09-04 react + springboot security 중간커밋">
       <created>1725429892700</created>
@@ -126,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1725430967644</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fix. spring security Filter 중간 커밋">
+      <created>1725451434824</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1725451434824</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,6 +190,7 @@
     <MESSAGE value="Fix. 2024-09-04 react + springboot security 중간커밋" />
     <MESSAGE value="Fix. TEST" />
     <MESSAGE value="Fix. react + springboot security 작업 임시저장" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix. react + springboot security 작업 임시저장" />
+    <MESSAGE value="Fix. spring security Filter 중간 커밋" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix. spring security Filter 중간 커밋" />
   </component>
 </project>

@@ -29,7 +29,7 @@ public class JwtTokenProvider {
     private final JwtProp jwtProp;
     private final UserRepository userRepository;
 
-    public String createToekn(int userNo, String userId) {
+    public String createToekn(Long userNo, String userId) {
 
         String jwt = Jwts.builder()
                 .signWith(getShaKey(), Jwts.SIG.HS512)
@@ -79,9 +79,27 @@ public class JwtTokenProvider {
             UserDetails userDetails = new CustomUser(Optional.of(user));
             return new UsernamePasswordAuthenticationToken(userDetails, null, null);
         } catch (Error e) {
-            log.info("getAuthentication error :: {}",e.getMessage());
+            log.info("getAuthentication error :: {}", e.getMessage());
         }
         return null;
+    }
+
+    public boolean validateToken(String jwt) {
+        try {
+            Jws<Claims> parsedToken = Jwts.parser()
+                    .verifyWith(getShaKey())
+                    .build()
+                    .parseSignedClaims(jwt);
+
+            log.info("#### 토큰 만료기간 ##### :: {}", parsedToken.getPayload().getExpiration());
+
+            Date exp = parsedToken.getPayload().getExpiration();
+
+            return !exp.before(new Date());
+        } catch (Exception e){
+            log.error("validateToekn Error :: {}",e.getMessage());
+            return false;
+        }
     }
 
     private byte[] getSigningKey() {

@@ -13,9 +13,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import photo_app_project.photo.security.custom.CustomUserDetailService;
 import photo_app_project.photo.security.jwt.filter.JwtAuthenticationFilter;
+import photo_app_project.photo.security.jwt.filter.JwtReqeustFilter;
+import photo_app_project.photo.security.jwt.provider.JwtTokenProvider;
 
 @Configuration
 @EnableWebSecurity
@@ -23,7 +26,7 @@ import photo_app_project.photo.security.jwt.filter.JwtAuthenticationFilter;
 public class SecurityConfig {
 
     private final CustomUserDetailService customUserDetailService;
-
+    private final JwtTokenProvider jwtTokenProvider;
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -37,6 +40,7 @@ public class SecurityConfig {
         return authenticationManager;
     }
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // 폼 기반 로그인 비활성화
@@ -45,13 +49,14 @@ public class SecurityConfig {
         http.httpBasic((basic) -> basic.disable());
         // CSRF 공격 방어 기능 비활성화
         http.csrf((csrf) -> csrf.disable());
+
         // 세션 관리 정책 설정
         // 세션 인증을 사용하지않고 JWT를 사용
         http.sessionManagement((management) -> management
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-        http.addFilterAt(new JwtAuthenticationFilter(authenticationManager), null)
-                .addFilterBefore(null, null);
+        http.addFilterAt(new JwtAuthenticationFilter(authenticationManager,jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new JwtReqeustFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
 
         http.authorizeHttpRequests(authorizaRequests ->
                 authorizaRequests

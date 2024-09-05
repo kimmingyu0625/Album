@@ -7,6 +7,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import photo_app_project.photo.security.jwt.constants.JwtConstants;
+import photo_app_project.photo.security.jwt.provider.JwtTokenProvider;
+import photo_app_project.photo.vo.CustomUser;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -19,9 +22,11 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
+    private final JwtTokenProvider jwtTokenProvider;
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager){
+    public JwtAuthenticationFilter(AuthenticationManager authenticationManager,JwtTokenProvider jwtTokenProvider){
         this.authenticationManager = authenticationManager;
+        this.jwtTokenProvider = jwtTokenProvider;
         setFilterProcessesUrl("/login");
     }
 
@@ -45,7 +50,18 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     @Override
-    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        super.successfulAuthentication(request, response, chain, authResult);
+    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
+
+        log.info("successfulAuthentication start");
+
+        CustomUser user = (CustomUser) authentication.getPrincipal();
+
+        Long userNo = user.getUserInfo().get().getId();
+        String userId = user.getUserInfo().get().getUserId();
+
+        String jwt = jwtTokenProvider.createToekn(userNo,userId);
+
+        response.addHeader(JwtConstants.TOKEN_HEADER, JwtConstants.TOKEN_PREFIX + jwt);
+        response.setStatus(200);
     }
 }
