@@ -4,13 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2131e54e-13f6-424f-a4ca-fbd442c15228" name="Changes" comment="Fix. spring security Filter 중간 커밋">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="2131e54e-13f6-424f-a4ca-fbd442c15228" name="Changes" comment="Fix.jwt 토큰 생성/유효성 검사/ 토큰 전달 filter 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/.gradle/8.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/photo/.gradle/8.8/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/photo/.gradle/8.8/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/photo/.gradle/8.8/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/photo/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/photo/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/photo/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/build/tmp/compileJava/compileTransaction/stash-dir/LoginServiceImpl.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/build/tmp/compileJava/compileTransaction/stash-dir/SecurityConfig.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/login/service/impl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/login/service/impl/LoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/prop/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/custom/CustomUserDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/custom/CustomUserDetailService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/jwt/filter/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/jwt/filter/JwtAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/jwt/filter/JwtReqeustFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/jwt/filter/JwtReqeustFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/jwt/provider/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo/src/main/java/photo_app_project/photo/security/jwt/provider/JwtTokenProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,12 +70,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/82104/Desktop/photo/photo/src/main/frontend/src/images",
+    "last_opened_file_path": "C:/Users/82104/Desktop/photo/photo",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.fileTypes",
     "spring.configuration.checksum": "7f971ca172c4edf58729ee4e6bbd93d6"
   }
 }]]></component>
@@ -91,12 +98,13 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="PhotoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ACTIVE_PROFILES" />
       <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../Program Files/Java/jdk-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <module name="photo.photo.main" />
+      <module name="photo.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="photo_app_project.photo.PhotoApplication" />
+      <option name="VM_PARAMETERS" value="-Dfile.encoding=UTF-8" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -116,7 +124,10 @@
       <workItem from="1724579900939" duration="6844000" />
       <workItem from="1725425235204" duration="5968000" />
       <workItem from="1725534736710" duration="325000" />
-      <workItem from="1725535077690" duration="2857000" />
+      <workItem from="1725535077690" duration="3712000" />
+      <workItem from="1726023051239" duration="697000" />
+      <workItem from="1726023941960" duration="621000" />
+      <workItem from="1726024579205" duration="214000" />
     </task>
     <task id="LOCAL-00001" summary="Fix. 2024-09-04 react + springboot security 중간커밋">
       <created>1725429892700</created>
@@ -139,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1725451434824</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fix.jwt 토큰 생성/유효성 검사/ 토큰 전달 filter 추가">
+      <created>1725538677407</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1725538677407</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +209,11 @@
     <MESSAGE value="Fix. TEST" />
     <MESSAGE value="Fix. react + springboot security 작업 임시저장" />
     <MESSAGE value="Fix. spring security Filter 중간 커밋" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix. spring security Filter 중간 커밋" />
+    <MESSAGE value="Fix.jwt 토큰 생성/유효성 검사/ 토큰 전달 filter 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix.jwt 토큰 생성/유효성 검사/ 토큰 전달 filter 추가" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

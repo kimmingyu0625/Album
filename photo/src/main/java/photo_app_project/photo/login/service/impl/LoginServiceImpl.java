@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Service;
 import photo_app_project.photo.comm.ResponseVo;
-import photo_app_project.photo.constants.SecurityConstants;
 import photo_app_project.photo.entity.UserInfo;
 import photo_app_project.photo.login.service.LoginService;
 import photo_app_project.photo.repository.UserRepository;

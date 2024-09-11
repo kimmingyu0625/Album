@@ -1,7 +1,6 @@
 package photo_app_project.photo.security.jwt.provider;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -18,7 +17,6 @@ import photo_app_project.photo.vo.CustomUser;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
-import java.util.Objects;
 import java.util.Optional;
 
 @Slf4j
