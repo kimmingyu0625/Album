@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import photo_app_project.photo.entity.UserInfo;
 import photo_app_project.photo.repository.UserRepository;
-import photo_app_project.photo.vo.CustomUser;
+import photo_app_project.photo.security.vo.CustomUser;
 
 import java.util.Optional;
 

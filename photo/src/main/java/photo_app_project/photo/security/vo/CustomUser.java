@@ -1,4 +1,4 @@
-package photo_app_project.photo.vo;
+package photo_app_project.photo.security.vo;
 
 import lombok.Getter;
 import lombok.Setter;

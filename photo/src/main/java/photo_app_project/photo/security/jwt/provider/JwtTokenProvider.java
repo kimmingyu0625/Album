@@ -13,9 +13,10 @@ import photo_app_project.photo.entity.UserInfo;
 import photo_app_project.photo.prop.JwtProp;
 import photo_app_project.photo.repository.UserRepository;
 import photo_app_project.photo.security.jwt.constants.JwtConstants;
-import photo_app_project.photo.vo.CustomUser;
+import photo_app_project.photo.security.vo.CustomUser;
 
 import javax.crypto.SecretKey;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 
@@ -72,7 +73,7 @@ public class JwtTokenProvider {
             user.setUserId(userId);
 
             Optional<UserInfo> userInfo = userRepository.findByUserId(userId);
-            user.setCreatedDt(userInfo.get().getCreatedDt());
+            user.setCreatedAt(userInfo.get().getCreatedAt());
 
             UserDetails userDetails = new CustomUser(Optional.of(user));
             return new UsernamePasswordAuthenticationToken(userDetails, null, null);

@@ -1,6 +1,5 @@
 package photo_app_project.photo.security.jwt.filter;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -9,7 +8,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import photo_app_project.photo.security.jwt.constants.JwtConstants;
 import photo_app_project.photo.security.jwt.provider.JwtTokenProvider;
-import photo_app_project.photo.vo.CustomUser;
+import photo_app_project.photo.security.vo.CustomUser;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -27,16 +26,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager,JwtTokenProvider jwtTokenProvider){
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
-        setFilterProcessesUrl("/login");
+        setFilterProcessesUrl(JwtConstants.AUTH_LOGIN_URL);
     }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
-        String username = request.getParameter("username");
+        String userId = request.getParameter("userId");
         String password = request.getParameter("password");
 
-        Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(userId, password);
 
         authentication = authenticationManager.authenticate(authentication);
 

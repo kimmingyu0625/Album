@@ -24,11 +24,11 @@ public class UserInfo {
     @Column(nullable = false)
     private String password;
 
-    @Column(name = "createdDt")
-    private LocalDateTime createdDt;
+    @Column(name = "createdAt")
+    private LocalDateTime createdAt;
 
     @PrePersist
     protected void onCreate() {
-        createdDt = LocalDateTime.now();
+        createdAt = LocalDateTime.now();
     }
 }
